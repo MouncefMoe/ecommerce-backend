@@ -29,6 +29,18 @@ class Settings(BaseSettings):
     # Database
     database_url: str = "sqlite+aiosqlite:///./ecommerce.db"
 
+    @property
+    def async_database_url(self) -> str:
+        """Convert database URL to async-compatible format."""
+        url = self.database_url
+        # Convert postgresql:// to postgresql+asyncpg://
+        if url.startswith("postgresql://"):
+            return url.replace("postgresql://", "postgresql+asyncpg://", 1)
+        # Convert postgres:// to postgresql+asyncpg://
+        elif url.startswith("postgres://"):
+            return url.replace("postgres://", "postgresql+asyncpg://", 1)
+        return url
+
     # Security
     secret_key: str = "change-me-in-production-use-openssl-rand-hex-32"
     jwt_algorithm: str = "HS256"
