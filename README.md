@@ -272,10 +272,61 @@ alembic downgrade -1
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Deployment
+
+### Option 1: Render (Recommended - Free)
+
+1. Fork this repository
+2. Go to [Render](https://render.com/) and sign up
+3. Click "New +" → "Blueprint"
+4. Connect your GitHub repository
+5. Render will auto-detect `render.yaml` and deploy!
+
+### Option 2: Railway
+
+1. Go to [Railway](https://railway.app/)
+2. Click "New Project" → "Deploy from GitHub repo"
+3. Select this repository
+4. Add PostgreSQL database
+5. Set environment variables
+6. Deploy!
+
+### Option 3: Fly.io
+
+```bash
+# Install flyctl
+curl -L https://fly.io/install.sh | sh
+
+# Login and launch
+fly auth login
+fly launch
+fly deploy
+```
+
+### Demo Data
+
+Seed the database with demo data:
+
+```bash
+python scripts/seed_demo_data.py
+```
+
+**Demo Credentials:**
+- Admin: `admin@demo.com` / `admin123`
+- Seller: `seller@demo.com` / `seller123`
+- Customer: `customer@demo.com` / `customer123`
+
+## Live Demo
+
+Once deployed, access:
+- **API Docs:** `https://your-app.com/docs`
+- **Demo Page:** `https://your-app.com/demo/`
+- **Health Check:** `https://your-app.com/health`
+
 ## Author
 
 **MouncefMoe** - [GitHub](https://github.com/MouncefMoe)
 
 ---
 
-Built with FastAPI and Python
+Built with FastAPI and Python 🚀

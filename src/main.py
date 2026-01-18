@@ -5,7 +5,8 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 from slowapi.util import get_remote_address
@@ -104,6 +105,15 @@ def create_application() -> FastAPI:
     app.include_router(reviews_router, prefix=api_prefix)
     app.include_router(admin_router, prefix=api_prefix)
 
+    # Mount static files for demo
+    try:
+        from pathlib import Path
+        demo_dir = Path(__file__).parent.parent / "demo"
+        if demo_dir.exists():
+            app.mount("/demo", StaticFiles(directory=str(demo_dir), html=True), name="demo")
+    except Exception:
+        pass
+
     return app
 
 
@@ -113,13 +123,8 @@ app = create_application()
 
 @app.get("/", tags=["Health"])
 async def root():
-    """Root endpoint."""
-    return {
-        "name": settings.app_name,
-        "version": settings.app_version,
-        "status": "running",
-        "docs": "/docs" if settings.is_development else "disabled",
-    }
+    """Root endpoint - redirects to demo page."""
+    return RedirectResponse(url="/demo/")
 
 
 @app.get("/health", tags=["Health"])
