@@ -1,0 +1,20 @@
+Generic single-database configuration with async SQLAlchemy.
+
+This directory contains Alembic migration scripts for the E-commerce Backend API.
+
+## Usage
+
+Generate a new migration:
+    alembic revision --autogenerate -m "Description of changes"
+
+Run migrations:
+    alembic upgrade head
+
+Rollback one migration:
+    alembic downgrade -1
+
+View current revision:
+    alembic current
+
+View migration history:
+    alembic history
