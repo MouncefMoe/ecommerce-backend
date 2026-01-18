@@ -1,11 +1,10 @@
-services:
-  # PostgreSQL Database
-  - type: pspg
-    name: ecommerce-db
-    plan: free
+databases:
+  - name: ecommerce-db
     databaseName: ecommerce
-    databaseUser: ecommerce_user
+    user: ecommerce_user
+    plan: free
 
+services:
   # FastAPI Backend
   - type: web
     name: ecommerce-backend
