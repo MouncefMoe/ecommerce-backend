@@ -167,6 +167,8 @@ async def seed_demo_data_endpoint():
     from src.database import async_session_maker
 
     try:
+        # First, create tables if they don't exist
+        await create_tables()
         async with async_session_maker() as session:
             # Check if data already exists
             from sqlalchemy import select
