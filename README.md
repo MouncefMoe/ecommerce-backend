@@ -1,10 +1,21 @@
-# E-commerce Backend API
+# 🛒 E-commerce Backend API
 
-A production-ready E-commerce Backend API built with **FastAPI** and **Python 3.11+**. This project demonstrates professional backend development practices including async patterns, JWT authentication, role-based access control, comprehensive testing, and Docker deployment.
+> A production-ready E-commerce Backend API built with **FastAPI** and **Python 3.11+**
+
+This project demonstrates professional backend development practices including async patterns, JWT authentication, role-based access control, comprehensive testing, and Docker deployment.
 
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.109+-green.svg)](https://fastapi.tiangolo.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18-blue.svg)](https://www.postgresql.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+## 🌟 Highlights
+
+- **Async-First Architecture** - Built with async/await patterns for high performance
+- **Production-Ready** - Includes security, rate limiting, logging, and error handling
+- **Comprehensive Testing** - pytest suite with >80% coverage
+- **Docker Support** - Ready for containerized deployment
+- **Clean Code** - Type hints, domain-driven design, SOLID principles
 
 ## Features
 
